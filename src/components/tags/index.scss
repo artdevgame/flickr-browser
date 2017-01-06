@@ -1,0 +1,19 @@
+.tags {
+	margin: 0;
+	&__title {
+		display: inline;
+		margin-right: 1ex;
+	}
+
+	&__tag {
+		display: inline;
+		margin-left: 0;
+		margin-right: 1ex;
+		&:after {
+			content: ", ";
+		}
+		&:last-child:after {
+			content: "";
+		}
+	}
+}

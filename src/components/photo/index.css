@@ -1,0 +1,35 @@
+.link {
+  color: #000;
+  font-weight: 600;
+  max-width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: inline-block; }
+  .link:hover {
+    text-decoration: underline;
+    color: #006dac; }
+
+.photo {
+  padding: 18px;
+  margin: 9px;
+  background: #fff;
+  border-radius: 3px;
+  max-width: 480px; }
+  .photo:hover {
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18); }
+  .photo__image {
+    background-color: #f3f5f6;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    height: 200px; }
+  .photo__details {
+    display: flex; }
+  .photo__title {
+    margin-right: 1ex; }
+  .photo__author {
+    margin-left: 1ex; }
+  .photo__description {
+    margin-bottom: 2em; }

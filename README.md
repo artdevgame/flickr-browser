@@ -1,2 +1,1 @@
-# flickr-browser
-Flickr Browser
+# Flickr Browser

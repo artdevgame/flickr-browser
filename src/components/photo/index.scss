@@ -1,0 +1,32 @@
+@import '../../settings.global';
+@import '../../elements.links';
+
+.photo {
+	padding: 18px;
+	margin: 9px;
+	background: #fff;
+	border-radius: 3px;
+	max-width: $tablet;
+	&:hover {
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+	}
+	&__image {
+		background-color: #f3f5f6;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		height: 200px;
+	}
+	&__details {
+		display: flex;
+	}
+	&__title {
+		margin-right: 1ex;
+	}
+	&__author {
+		margin-left: 1ex;
+	}
+	&__description {
+		margin-bottom: 2em;
+	}
+}

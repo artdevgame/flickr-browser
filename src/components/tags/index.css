@@ -1,0 +1,13 @@
+.tags {
+  margin: 0; }
+  .tags__title {
+    display: inline;
+    margin-right: 1ex; }
+  .tags__tag {
+    display: inline;
+    margin-left: 0;
+    margin-right: 1ex; }
+    .tags__tag:after {
+      content: ", "; }
+    .tags__tag:last-child:after {
+      content: ""; }
