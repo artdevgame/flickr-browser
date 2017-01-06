@@ -1,0 +1,12 @@
+@import 'tools.mixins';
+
+.link {
+	@include condense;
+	color: #000;
+	font-weight: 600;
+	cursor: pointer;
+	&:hover {
+		text-decoration: underline;
+		color: #006dac;
+	}
+}

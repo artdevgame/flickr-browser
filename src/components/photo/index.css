@@ -1,0 +1,65 @@
+.link {
+  max-width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #000;
+  font-weight: 600;
+  cursor: pointer; }
+  .link:hover {
+    text-decoration: underline;
+    color: #006dac; }
+
+.photo {
+  padding: 9px;
+  margin: 9px;
+  background: #fff;
+  border-radius: 3px;
+  position: relative; }
+  .photo:hover {
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.08); }
+  .photo__image {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    padding-bottom: 100%;
+    margin-bottom: 8px;
+    display: block; }
+  .photo__details {
+    display: flex; }
+  .photo__title {
+    margin-right: 0.3em;
+    display: inline-block;
+    flex: 0 25 auto; }
+  .photo__author {
+    margin-left: 0.3em;
+    display: inline-block;
+    flex: 0 1 auto; }
+  .photo__description {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    hyphens: auto;
+    margin-bottom: 2em; }
+  .photo__views {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background: #c00;
+    padding: 1em;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 0.6em; }
+
+.fixed-col {
+  flex-shrink: 0; }
+
+@media (min-width: 768px) {
+  .photo {
+    width: 30%; } }
+
+@media (min-width: 1024px) {
+  .photo {
+    width: 20%; } }

@@ -1,0 +1,18 @@
+.search {
+  width: 100%;
+  margin-top: 18px; }
+
+.search__input {
+  box-sizing: border-box;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  border: none;
+  padding: 8px;
+  padding-right: 3em;
+  width: 100%;
+  background: url(./search.svg) no-repeat 98% 50%;
+  background-size: 1.6em; }
+
+@media (min-width: 768px) {
+  .search {
+    width: 30%;
+    margin-top: 0; } }

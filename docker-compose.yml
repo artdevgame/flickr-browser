@@ -1,0 +1,10 @@
+version: '2'
+services:
+  flickr_app:
+    build: ./docker
+    image: flickr:app
+    container_name: flickr_app
+    ports:
+      - "1337:80"
+    volumes:
+      - ./build:/app/src
