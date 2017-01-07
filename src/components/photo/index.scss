@@ -1,32 +1,52 @@
 @import '../../settings.global';
+@import '../../tools.mixins';
 @import '../../elements.links';
 
 .photo {
-	padding: 18px;
+	padding: 9px;
 	margin: 9px;
 	background: #fff;
 	border-radius: 3px;
-	max-width: $tablet;
 	&:hover {
-		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.18);
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08),
+			0 0 0 1px rgba(0, 0, 0, 0.08);
 	}
 	&__image {
-		background-color: #f3f5f6;
 		background-size: cover;
 		background-repeat: no-repeat;
 		background-position: 50% 50%;
-		height: 200px;
+		padding-bottom: 100%;
+		margin-bottom: 8px;
+		display: block;
 	}
 	&__details {
 		display: flex;
 	}
 	&__title {
-		margin-right: 1ex;
+		margin-right: 0.3em;
 	}
 	&__author {
-		margin-left: 1ex;
+		margin-left: 0.3em;
 	}
 	&__description {
+		@include break-long-words;
 		margin-bottom: 2em;
+		display: none;
+	}
+}
+
+.fixed-col {
+	flex-shrink: 0;
+}
+
+@media(min-width: $tablet) {
+	.photo {
+		width: 30%;
+	}
+}
+
+@media(min-width: $desktop) {
+	.photo {
+		width: 20%;
 	}
 }

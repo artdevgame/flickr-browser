@@ -1,5 +1,9 @@
+@import '../../tools.mixins';
+
 .tags {
+	@include break-long-words;
 	margin: 0;
+	font-size: 0.9em;
 	&__title {
 		display: inline;
 		margin-right: 1ex;
@@ -8,7 +12,6 @@
 	&__tag {
 		display: inline;
 		margin-left: 0;
-		margin-right: 1ex;
 		&:after {
 			content: ", ";
 		}

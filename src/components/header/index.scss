@@ -1,0 +1,29 @@
+@import '../../settings.global';
+
+.header {
+	display: flex;
+	flex-direction: column;
+	padding: 18px;
+	background: #fff;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08),
+		0 0 0 1px rgba(0, 0, 0, 0.08);
+	margin-bottom: 36px;
+}
+
+.header__title {
+	margin: 0;
+	font-weight: 300;
+	font-size: 1.6em;
+}
+
+.filter {
+	text-transform: uppercase;
+}
+
+@media(min-width: $tablet) {
+	.header {
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+	}
+}
