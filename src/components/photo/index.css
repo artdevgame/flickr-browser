@@ -5,7 +5,8 @@
   overflow: hidden;
   text-decoration: none;
   text-overflow: ellipsis;
-  white-space: nowrap; }
+  white-space: nowrap;
+  cursor: pointer; }
   .link:hover {
     text-decoration: underline;
     color: #006dac; }

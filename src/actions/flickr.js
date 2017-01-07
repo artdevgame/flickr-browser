@@ -76,8 +76,11 @@ export function fetchPublicPhotos(filter) {
 		};
 
 		if (filter) {
-			params.text = filter.join();
-			params.method = 'flickr.photos.search';
+			filter = filter.filter(keyword => keyword);
+			if (filter.length) {
+				params.text = filter.join();
+				params.method = 'flickr.photos.search';
+			}
 		}
 
 		return axios.get('/services/rest', {
@@ -100,4 +103,8 @@ export function fetchPublicPhotos(filter) {
 
 export function fetchPhotosWithTag(tag) {
 	return fetchPublicPhotos([tag]);
+}
+
+export function fetchPhotosWithText(text) {
+	return fetchPublicPhotos(text.split(',').map(keyword => keyword.trim()));
 }

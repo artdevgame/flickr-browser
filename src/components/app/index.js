@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { fetchPublicPhotos, fetchPhotosWithTag } from '../../actions/flickr';
 import Header from '../header';
 import Photo from '../photo';
 import PhotoSet from '../photoset';
 import './index.css';
-
-import { fetchPublicPhotos, fetchPhotosWithTag } from '../../actions/flickr';
 
 function getPhotos(props) {
 	if (props.params.tag) {

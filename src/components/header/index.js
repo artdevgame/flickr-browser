@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { fetchPublicPhotos } from '../../actions/flickr';
 import Search from '../search';
 import './index.css';
 
 class Header extends Component {
+	loadPhotos(event) {
+		this.props.fetchPublicPhotos();
+		event.preventDefault();
+	}
+
 	render() {
 
 		let filter;
@@ -13,7 +20,7 @@ class Header extends Component {
 
 		return (
 			<div className="header">
-				<Link to="/" className="header__title link">Flickr Photo Stream</Link>
+				<a className="header__title link" onClick={this.loadPhotos.bind(this)}>Flickr Photo Stream</a>
 				{filter}
 				<Search />
 			</div>
@@ -21,4 +28,8 @@ class Header extends Component {
 	}
 }
 
-export default Header;
+export default connect(null, dispatch => {
+	return bindActionCreators({
+		fetchPublicPhotos: fetchPublicPhotos,
+	}, dispatch);
+})(Header);
