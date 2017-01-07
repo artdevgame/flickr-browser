@@ -22,6 +22,10 @@ class App extends Component {
 	}
 
 	componentWillReceiveProps(newProps) {
+		if (newProps.error.hasError) {
+			this.props.router.push('/oops');
+		}
+
 		if (newProps.params.tag !== this.props.params.tag) {
 			getPhotos(newProps);
 		}
@@ -46,6 +50,7 @@ export default connect(
 	(state) => ({
 		isLoading: state.photoset.isLoading,
 		photos: state.photoset.photos,
+		error: state.error,
 	}),
 	(dispatch) => {
 		return bindActionCreators({

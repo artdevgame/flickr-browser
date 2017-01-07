@@ -23,8 +23,7 @@ const getRoutes = (store) => {
 
 	return (
 		<Route>
-			<Route path="/tags/:tag" component={App} onEnter={hasError} />
-			<Route path="/" component={App} onEnter={hasError} />
+			<Route path="/(tags/:tag)" component={App} onEnter={hasError} />
 			<Route path="*" component={Error} />
 		</Route>
 	);

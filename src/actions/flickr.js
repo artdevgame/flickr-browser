@@ -43,70 +43,57 @@ function flickrError(error) {
 	}
 }
 
-function fetchPhoto(id, dispatch) {
-	return axios.get('/services/rest', {
-		params: {
-			...defaultParams,
-			method: 'flickr.photos.getInfo',
-			photo_id: id,
-		}
-	}).then(function (response) {
-		if (200 !== response.status || !response.data.hasOwnProperty('photo')) {
-			Promise.reject('No photo found');
-		}
-
-		const photo = response.data.photo;
-		return Promise.resolve({
-			...photo,
-			image: getStaticImageUrl(photo),
-			link: photo.urls.url[0]._content,
-			title: sanitizeHtml(photo.title._content.replace(/\s+/, ''), sanitizeParams) || 'Untitled',
-			description: sanitizeHtml(photo.description._content.replace(/\s+/, ''), sanitizeParams),
-			authorUrl: '//www.flickr.com/photos/' + photo.owner.nsid,
-			author: photo.owner.username,
-			tags: photo.tags.tag.filter(function (tag) {
-				return tag.machine_tag < 1;
-			})
-		});
-	}, error => dispatch(flickrError(error)));
-}
-
 function getStaticImageUrl(photo, size = 'm') {
 	return '//farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_' + size + '.jpg';
 }
 
-export function fetchPublicPhotos(tags) {
-	return (dispatch) => {
+function initPhoto(photo) {
+	return {
+		...photo,
+		image: getStaticImageUrl(photo),
+		link: '//www.flickr.com/photos/' + photo.owner + '/' + photo.id,
+		title: sanitizeHtml(photo.title.replace(/\s+/, ''), sanitizeParams) || 'Untitled',
+		description: sanitizeHtml(photo.description._content.replace(/\s+/, ''), sanitizeParams),
+		authorUrl: '//www.flickr.com/photos/' + photo.owner,
+		author: photo.ownername,
+		tags: photo.tags.split(' ').filter(tag => tag)
+	};
+}
+
+export function fetchPublicPhotos(filter) {
+	return dispatch => {
 		dispatch(loading());
 
-		let params = {...defaultParams};
+		let params = {
+			...defaultParams,
+			method: 'flickr.photos.getRecent',
+			extras: [
+				'description',
+				'owner_name',
+				'tags',
+				'views',
+			].join()
+		};
 
-		if (tags) {
-			params.tags = tags.join();
-			params.tagmode = 'any';
+		if (filter) {
+			params.text = filter.join();
+			params.method = 'flickr.photos.search';
 		}
 
-		return axios.get('/services/feeds/photos_public.gne', {
+		return axios.get('/services/rest', {
 			params: params
-		}).then(function (response) {
-			if (response.data.hasOwnProperty('items') && response.data.items.length) {
-
-				let photoInfo = [];
-
-				// the data from the public api comes unsanitised and incomplete,
-				// lookup full photo details from the flickr.photos.getInfo endpoint
-				response.data.items.forEach(function (item) {
-					photoInfo.push(fetchPhoto(item.link.match(/\/([0-9]+)\/$/)[1], dispatch));
-					return item;
-				});
-
-				return axios.all(photoInfo);
+		}).then(response => {
+			if ('ok' === response.data.stat) {
+				return Promise.resolve(response.data.photos);
 			}
-			return Promise.resolve([]);
-		}, error => dispatch(flickrError(error)))
-		.then(function (photos) {
+			return Promise.reject(response.data.message);
+		})
+		.then(photoData => {
+			const photos = photoData.photo.map(function (photo) {
+				return initPhoto(photo);
+			});
 			dispatch(photosLoaded(photos));
-		}, function (error) { alert(error); })
+		})
 		.catch(error => dispatch(flickrError(error)));
 	}
 }

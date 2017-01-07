@@ -5,7 +5,7 @@ import './index.css';
 class Tags extends Component {
 	render() {
 		const tags = this.props.tags.map((tag, i) => {
-			return <dd key={i} className="tags__tag"><Link to={'/tags/' + tag._content} className="link">{tag._content}</Link></dd>
+			return <dd key={i} className="tags__tag"><Link to={'/tags/' + tag} className="link">{tag}</Link></dd>
 		});
 
 		if (!tags.length) {
