@@ -29,9 +29,13 @@
   .photo__details {
     display: flex; }
   .photo__title {
-    margin-right: 0.3em; }
+    margin-right: 0.3em;
+    display: inline-block;
+    flex: 0 25 auto; }
   .photo__author {
-    margin-left: 0.3em; }
+    margin-left: 0.3em;
+    display: inline-block;
+    flex: 0 1 auto; }
   .photo__description {
     overflow-wrap: break-word;
     word-wrap: break-word;

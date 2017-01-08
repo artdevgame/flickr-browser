@@ -5,7 +5,8 @@
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-sass": "^3.0.0",
-    "react-scripts": "0.8.4"
+    "react-scripts": "0.8.4",
+    "redux-mock-store": "^1.2.1"
   },
   "dependencies": {
     "axios": "^0.15.3",

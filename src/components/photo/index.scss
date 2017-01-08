@@ -25,9 +25,13 @@
 	}
 	&__title {
 		margin-right: 0.3em;
+		display: inline-block;
+		flex: 0 25 auto;
 	}
 	&__author {
 		margin-left: 0.3em;
+		display: inline-block;
+		flex: 0 1 auto;
 	}
 	&__description {
 		@include break-long-words;
