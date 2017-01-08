@@ -1,5 +1,6 @@
 .search {
-  width: 100%; }
+  width: 100%;
+  margin-top: 18px; }
 
 .search__input {
   box-sizing: border-box;
@@ -13,4 +14,5 @@
 
 @media (min-width: 768px) {
   .search {
-    width: 30%; } }
+    width: 30%;
+    margin-top: 0; } }

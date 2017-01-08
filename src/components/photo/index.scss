@@ -7,6 +7,7 @@
 	margin: 9px;
 	background: #fff;
 	border-radius: 3px;
+	position: relative;
 	&:hover {
 		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08),
 			0 0 0 1px rgba(0, 0, 0, 0.08);
@@ -31,20 +32,26 @@
 	&__description {
 		@include break-long-words;
 		margin-bottom: 2em;
-		display: none;
+	}
+	&__views {
+		position: absolute;
+		right: 20px;
+		top: 20px;
+		background: #c00;
+		padding: 1em;
+		border-radius: 3px;
+		color: #fff;
+		font-size: 0.6em;
 	}
 }
-
 .fixed-col {
 	flex-shrink: 0;
 }
-
 @media(min-width: $tablet) {
 	.photo {
 		width: 30%;
 	}
 }
-
 @media(min-width: $desktop) {
 	.photo {
 		width: 20%;

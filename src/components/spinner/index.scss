@@ -1,11 +1,11 @@
 /* https://projects.lukehaas.me/css-loaders/ */
-.loader,
-.loader:after {
+.spinner,
+.spinner:after {
 	border-radius: 50%;
 	width: 10em;
 	height: 10em;
 }
-.loader {
+.spinner {
 	margin: 60px auto;
 	font-size: 10px;
 	position: relative;

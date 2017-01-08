@@ -1,11 +1,9 @@
+@import 'tools.mixins';
+
 .link {
+	@include condense;
 	color: #000;
 	font-weight: 600;
-	max-width: 100%;
-	overflow: hidden;
-	text-decoration: none;
-	text-overflow: ellipsis;
-	white-space: nowrap;
 	cursor: pointer;
 	&:hover {
 		text-decoration: underline;

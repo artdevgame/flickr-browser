@@ -2,7 +2,7 @@ import { ERROR_FLICKR, ERROR_CONSUMED } from '../actions/action-types';
 
 export default (state = {
 	hasError: false,
-	error: ''
+	message: ''
 }, action) => {
 	switch (action.type) {
 		case ERROR_FLICKR:

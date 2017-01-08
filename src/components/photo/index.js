@@ -1,12 +1,21 @@
 import React, { Component } from 'react';
 import LazyLoad from 'react-lazyload';
 import Tags from '../tags';
+import Spinner from '../spinner';
 import './index.css';
 
 class Photo extends Component {
 	render() {
+		const loader = <Spinner />;
 
-		const loader = <div className="loader" />;
+		let views;
+		if (this.props.views > 0) {
+			let count = this.props.views;
+			if (count > 99) {
+				count = '99+';
+			}
+			views = <span className="photo__views" title={count + ' views'}>{count}</span>;
+		}
 
 		return (
 			<div className="photo">
@@ -21,8 +30,8 @@ class Photo extends Component {
 				</p>
 
 				<div className="photo__description">{ this.props.description }</div>
-
 				<Tags tags={ this.props.tags } />
+				{views}
 			</div>
 		);
 	}

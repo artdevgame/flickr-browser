@@ -4,7 +4,7 @@ import error from './error';
 
 const rootReducer = combineReducers({
 	photoset: photoset,
-	error: error
+	error: error,
 });
 
 export default rootReducer;

@@ -2,6 +2,7 @@
 
 .search {
 	width: 100%;
+	margin-top: 18px;
 }
 .search__input {
 	box-sizing: border-box;
@@ -14,9 +15,9 @@
 	background: url(./search.svg) no-repeat 98% 50%;
 	background-size: 1.6em;
 }
-
 @media(min-width: $tablet) {
 	.search {
 		width: 30%;
+		margin-top: 0;
 	}
 }

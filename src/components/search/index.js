@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { fetchPhotosWithText, fetchPublicPhotos } from '../../actions/flickr';
+import { withRouter } from 'react-router';
 import './index.css';
 
 class Search extends Component {
-
 	constructor(props) {
 		super(props);
-		this.state = {search: ''};
+		this.state = {pattern: this.props.pattern};
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.pattern !== this.props.pattern) {
+			this.setState({pattern: nextProps.pattern});
+		}
 	}
 
 	changeListener(event) {
-		this.setState({search: event.target.value});
+		this.setState({pattern: event.target.value});
 	}
 
 	submitListener(event) {
-		let {search} = this.state;
+		let {pattern} = this.state;
 
-		if (search.replace(/\s+/, '')) {
-			this.props.fetchPhotosWithText(search);
+		if (pattern.replace(/\s+/, '')) {
+			this.props.router.push('/search/' + pattern)
 		} else {
-			this.props.fetchPublicPhotos();
+			this.props.router.push('/');
 		}
 		event.preventDefault();
 	}
@@ -29,15 +32,10 @@ class Search extends Component {
 	render() {
 		return (
 			<form className="search" onSubmit={this.submitListener.bind(this)}>
-				<input type="text" className="search__input" value={this.state.value} onChange={this.changeListener.bind(this)} />
+				<input type="text" className="search__input" value={this.state.pattern} onChange={this.changeListener.bind(this)} />
 			</form>
 		);
 	}
 }
 
-export default connect(null, (dispatch) => {
-	return bindActionCreators({
-		fetchPhotosWithText: fetchPhotosWithText,
-		fetchPublicPhotos: fetchPublicPhotos,
-	}, dispatch);
-})(Search);
+export default withRouter(Search);

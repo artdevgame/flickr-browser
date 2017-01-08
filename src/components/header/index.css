@@ -8,14 +8,25 @@
 
 .header__title {
   margin: 0;
+  margin-bottom: 18px;
   font-weight: 300;
   font-size: 1.6em; }
 
-.filter {
-  text-transform: uppercase; }
+.title {
+  max-width: 100%;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: uppercase;
+  margin: 0; }
 
 @media (min-width: 768px) {
   .header {
     flex-direction: row;
     justify-content: space-between;
-    align-items: center; } }
+    align-items: center; }
+  .header__title {
+    margin-bottom: 0; }
+  .title {
+    max-width: 30%; } }
