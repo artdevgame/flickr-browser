@@ -38,7 +38,7 @@ function flickrError(error) {
 	return {
 		type: ERROR_FLICKR,
 		data: {
-			message: error
+			message: error.toString()
 		}
 	}
 }
