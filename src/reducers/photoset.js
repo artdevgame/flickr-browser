@@ -1,7 +1,7 @@
 import { PHOTOS_LOADING, PHOTOS_LOADING_SUCCESS } from '../actions/action-types';
 
 export default (state = {
-	isLoading: true,
+	isLoading: false,
 	photos: []
 }, action) => {
 	switch (action.type) {

@@ -38,22 +38,34 @@ function flickrError(error) {
 	return {
 		type: ERROR_FLICKR,
 		data: {
-			error: error
+			message: error
 		}
 	}
 }
 
 function getStaticImageUrl(photo, size = 'm') {
-	return '//farm' + photo.farm + '.staticflickr.com/' + photo.server + '/' + photo.id + '_' + photo.secret + '_' + size + '.jpg';
+	return '//farm' + photo.farm + '.staticflickr.com/' + photo.server + '/'
+		+ photo.id + '_' + photo.secret + '_' + size + '.jpg';
 }
 
 function initPhoto(photo) {
+	// truncate the description to a reasonable length
+	const maxDescriptionLength = 300;
+	let description = sanitizeHtml(
+		photo.description._content.replace(/\s+/, ''),
+		sanitizeParams
+	).substring(0, maxDescriptionLength);
+
+	if (photo.description._content.length > maxDescriptionLength) {
+		description += '...';
+	}
+
 	return {
 		...photo,
 		image: getStaticImageUrl(photo),
 		link: '//www.flickr.com/photos/' + photo.owner + '/' + photo.id,
 		title: sanitizeHtml(photo.title.replace(/\s+/, ''), sanitizeParams) || 'Untitled',
-		description: sanitizeHtml(photo.description._content.replace(/\s+/, ''), sanitizeParams),
+		description: description,
 		authorUrl: '//www.flickr.com/photos/' + photo.owner,
 		author: photo.ownername,
 		tags: photo.tags.split(' ').filter(tag => tag)

@@ -1,6 +1,6 @@
 import { ERROR_CONSUMED } from './action-types';
 
-export function consumeError() {
+export function errorConsumed() {
 	return {
 		type: ERROR_CONSUMED
 	};

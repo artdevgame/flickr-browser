@@ -8,19 +8,19 @@ import './index.css';
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {content: <Spinner />};
+		this.state = {content: this.props.content};
 	}
 
-	componentWillReceiveProps(newProps) {
-		if (newProps.error.hasError) {
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.error.hasError) {
 			const errorMessage = <ErrorMessage message={
-				newProps.error.message || 'An unknown error occurred'
+				nextProps.error.message || 'An unknown error occurred'
 			} />
 			this.setState({content: errorMessage});
-		} else if (newProps.isLoading) {
+		} else if (nextProps.isLoading) {
 			this.setState({content: <Spinner />});
-		} else if (newProps.content !== this.props.content) {
-			this.setState({content: newProps.content});
+		} else if (nextProps.content !== this.props.content) {
+			this.setState({content: nextProps.content});
 		}
 	}
 

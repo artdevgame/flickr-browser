@@ -5,11 +5,13 @@ import './index.css';
 class Search extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {pattern: this.props.pattern};
+		// prevent 'uncontrolled' component turning into 'controlled' component
+		this.state = {pattern: this.props.pattern || ''};
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.pattern !== this.props.pattern) {
+			// if the pattern has changed, update the search field
 			this.setState({pattern: nextProps.pattern});
 		}
 	}
