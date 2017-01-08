@@ -1,6 +1,7 @@
 import axios from 'axios';
 import sanitizeHtml from 'sanitize-html';
-import { PHOTOS_LOADING, PHOTOS_LOADING_SUCCESS, ERROR_FLICKR } from './action-types';
+import { errorConsumed } from './index';
+import { PHOTOS_LOADING, PHOTOS_LOADING_SUCCESS, ERROR_FLICKR, PHOTOS_RESET } from './action-types';
 
 const defaultParams = {
 	api_key: process.env.REACT_APP_FLICKR_KEY,
@@ -13,6 +14,12 @@ const defaultParams = {
 const sanitizeParams = {
 	allowedTags: [],
 };
+
+export function photosReset() {
+	return {
+		type: PHOTOS_RESET,
+	}
+}
 
 function loading() {
 	return {
@@ -38,6 +45,7 @@ function flickrError(error) {
 	return {
 		type: ERROR_FLICKR,
 		data: {
+			hasError: true,
 			message: (error || '').toString()
 		}
 	}
@@ -74,6 +82,7 @@ function initPhoto(photo) {
 
 export function fetchPublicPhotos(filter) {
 	return dispatch => {
+		dispatch(errorConsumed());
 		dispatch(loading());
 
 		let params = {
