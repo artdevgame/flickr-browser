@@ -38,7 +38,7 @@ function flickrError(error) {
 	return {
 		type: ERROR_FLICKR,
 		data: {
-			message: error.toString()
+			message: (error || '').toString()
 		}
 	}
 }
@@ -95,7 +95,7 @@ export function fetchPublicPhotos(filter) {
 			}
 		}
 
-		return axios.get('/services/rest', {
+		return axios.create({baseURL: 'https://api.flickr.com'}).get('/services/rest', {
 			params: params
 		}).then(response => {
 			if ('ok' === response.data.stat) {
