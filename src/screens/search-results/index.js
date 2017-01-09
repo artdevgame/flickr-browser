@@ -23,11 +23,9 @@ class SearchResultsScreen extends Component {
 
 	render() {
 		return (
-			<App
-				title="Search Results"
-				filter={this.props.params.pattern}
-				content={<PhotoSet photos={this.props.photos.map((photo, i) => <Photo key={i} {...photo} />)} />}
-			/>
+			<App title="Search Results" filter={this.props.params.pattern}>
+				<PhotoSet photos={this.props.photos.map((photo, i) => <Photo key={i} {...photo} />)} />
+			</App>
 		)
 	}
 }

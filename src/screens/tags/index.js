@@ -23,11 +23,9 @@ class TagsScreen extends Component {
 
 	render() {
 		return (
-			<App
-				title={'Tag: ' + this.props.params.tag}
-				filter={this.props.params.tag}
-				content={<PhotoSet photos={this.props.photos.map((photo, i) => <Photo key={i} {...photo} />)} />}
-			/>
+			<App title={'Tag: ' + this.props.params.tag} filter={this.props.params.tag}>
+				<PhotoSet photos={this.props.photos.map((photo, i) => <Photo key={i} {...photo} />)} />
+			</App>
 		)
 	}
 }

@@ -13,9 +13,9 @@ class HomeScreen extends Component {
 
 	render() {
 		return (
-			<App content={
+			<App>
 				<PhotoSet photos={this.props.photos.map((photo, i) => <Photo key={i} {...photo} />)} />
-			} />
+			</App>
 		)
 	}
 }

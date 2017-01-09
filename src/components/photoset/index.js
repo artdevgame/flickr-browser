@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import './index.css';
 
 class PhotoSet extends Component {
+	shouldComponentUpdate() {
+		return false;
+	}
+
 	render() {
 		return (
 			<div className="photoset">

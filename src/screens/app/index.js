@@ -8,7 +8,7 @@ import './index.css';
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {content: this.props.content};
+		this.state = {content: this.props.children};
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -19,8 +19,8 @@ class App extends Component {
 			this.setState({content: errorMessage});
 		} else if (nextProps.isLoading) {
 			this.setState({content: <Spinner />});
-		} else if (nextProps.content !== this.props.content) {
-			this.setState({content: nextProps.content});
+		} else if (nextProps.children !== this.props.children) {
+			this.setState({content: nextProps.children});
 		}
 	}
 
