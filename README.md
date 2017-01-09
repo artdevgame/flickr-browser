@@ -9,6 +9,8 @@ You must have `yarn` or `docker-compose` installed.
 
 Copy `.env.example` to `.env` and replace the Flickr API credentials with your own.
 
+Pull the project dependencies by running `yarn`.
+
 To run the app in development mode, run `yarn start`.
 
 To run the app in production mode, run `yarn build ; docker-compose up -d`, by default `http://localhost:1337` will render the site. If you would like to change the port, you can do so in `docker-compose.yml`.
