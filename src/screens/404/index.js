@@ -9,9 +9,15 @@ class NotFoundScreen extends Component {
 		this.props.dispatch(errorConsumed());
 	}
 
+	shouldComponentUpdate() {
+		return false;
+	}
+
 	render() {
 		return (
-			<App content={<ErrorMessage message="Whoops, did you get lost?" />} />
+			<App>
+				<ErrorMessage message="Whoops, did you get lost?" />
+			</App>
 		)
 	}
 }

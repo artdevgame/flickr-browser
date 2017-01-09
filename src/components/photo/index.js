@@ -5,6 +5,10 @@ import Spinner from '../spinner';
 import './index.css';
 
 class Photo extends Component {
+	shouldComponentUpdate() {
+		return false;
+	}
+
 	render() {
 		const loader = <Spinner />;
 
