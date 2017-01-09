@@ -38,3 +38,7 @@ Future considerations could include:
 * Infinite scrolling, or possibly using a queuing system (such as RabbitMQ) to retrieve updates to the feed
 * Caching results returned from the API
 * Introducing react-router-redux to manage route state persistance
+
+## Demo
+
+![Preview](https://github.com/flyingbuddha/flickr-browser/blob/master/ui.gif)
